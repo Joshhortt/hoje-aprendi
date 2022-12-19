@@ -48,7 +48,6 @@ h1 {
   padding: 16px 24px;
   letter-spacing: -1px;
   border-radius: 16px;
-
   display: flex;
   align-items: center;
   gap: 24px;
@@ -62,6 +61,17 @@ h1 {
   padding-left: 10px;
   padding-right: 10px;
   border-radius: 100px;
+}
+
+/* FORM */
+.fact-form {
+  background-color: #44403c;
+  margin-bottom: 40px;
+  padding: 16px 32px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  border-radius: 16px;
 }
 
 ul {
