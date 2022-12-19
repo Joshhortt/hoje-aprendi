@@ -17,82 +17,93 @@
     <title>Hoje Aprendi!</title>
   </head>
   <body>
-    <header>
-      <img src="logo.png" height="68" width="68" alt="Hoje Aprendi!" />
-      <h1>Hoje Aprendi!</h1>
-      <button>Partilha Algo</button>
-    </header>
+    <div class="container">
+      <header class="header">
+        <div class="logo">
+          <img src="logo.png" height="68" width="68" alt="Hoje Aprendi!" />
+          <h1>Hoje Aprendi!</h1>
+        </div>
+        <button>Partilha Algo</button>
+      </header>
 
-    <form>
-      <input type="text" placeholder="Partilha aqui contéudos com outros..." />
-      <span>200</span>
-      <input
-        type="text"
-        placeholder="Insere um Link como Fonte de confiança..."
-      />
-      <select>
-        <option value="">Escolhe o Módulo relacionado:</option>
-        <option value="introdução à costura">Introdução à Costura</option>
-        <option value="projeto de moda criativo">Projeto Moda Criativo</option>
-      </select>
-      <button>Publica</button>
-    </form>
+      <form class="fact-form">
+        <input
+          type="text"
+          placeholder="Partilha aqui contéudos com outros..."
+        />
+        <span>200</span>
+        <input
+          type="text"
+          placeholder="Insere um Link como Fonte de confiança..."
+        />
+        <select>
+          <option value="">Escolhe o Módulo relacionado:</option>
+          <option value="introdução à costura">Introdução à Costura</option>
+          <option value="projeto de moda criativo">
+            Projeto Moda Criativo
+          </option>
+        </select>
+        <button>Publicar</button>
+      </form>
 
-    <main>
-      <aside>
-        <ul>
-          <li><button>Ver Tudo</button></li>
-          <li>
-            <button>Iniciação à Costura</button>
-          </li>
-          <li>
-            <button>Projeto Moda Criativo</button>
-          </li>
-        </ul>
-      </aside>
+      <main class="main">
+        <aside>
+          <ul>
+            <li><button>Ver Tudo</button></li>
+            <li>
+              <button>Iniciação à Costura</button>
+            </li>
+            <li>
+              <button>Projeto Moda Criativo</button>
+            </li>
+          </ul>
+        </aside>
 
-      <section>
-        <ul>
-          <li class="fact">
-            <p>
-              Como começar a costurar: Dez (10) dicas para iniciantes!
-              <a
-                href="https://alegro.pt/lets-talk/como-comecar-costurar/"
-                target="_blank"
-                >(Link)</a
-              >
+        <section>
+          <ul>
+            <li class="fact">
+              <p>
+                Como começar a costurar: Dez (10) dicas para iniciantes!
+                <a
+                  class="source"
+                  href="https://alegro.pt/lets-talk/como-comecar-costurar/"
+                  target="_blank"
+                  >(Link)</a
+                >
+              </p>
               <span class="tag" style="background-color: #3b82f6"
                 >#introdução à costura#</span
               >
-            </p>
-            <!--PARA INSERIR EMOJIS 😀 UTILIZE O BOTÃO DO TECLADO DO WINDOWS + O PONTO (.)-->
+              <!--PARA INSERIR EMOJIS 😀 UTILIZE O BOTÃO DO TECLADO DO WINDOWS + O PONTO (.)-->
 
-            <div>
-              <button>👍 <strong>24</strong></button>
-              <button>🤯 <strong>9</strong></button>
-              <button>⛔️ <strong>4</strong></button>
-            </div>
-          </li>
-          <li class="fact">
-            <p>
-              Processo criativo no design de moda: como explorar o seu?
-              <a
-                href="https://www.digitaletextil.com.br/blog/processo-criativo-design-de-moda/"
-                target="_blank"
-                >(Link)</a
-              >
+              <div class="vote_buttons">
+                <button>👍 <strong>24</strong></button>
+                <button>🤯 <strong>9</strong></button>
+                <button>⛔️ <strong>4</strong></button>
+              </div>
+            </li>
+            <li class="fact">
+              <p>
+                Processo criativo no design de moda: como explorar o seu?
+                <a
+                  class="source"
+                  href="https://www.digitaletextil.com.br/blog/processo-criativo-design-de-moda/"
+                  target="_blank"
+                  >(Link)</a
+                >
+              </p>
               <span class="tag" style="background-color: #16a34a"
                 >#projeto de moda criativo#</span
               >
-            </p>
-            <div>
-              <button>👍 <strong>11</strong></button>
-              <button>🤯 <strong>2</strong></button>
-              <button>⛔️ <strong>0</strong></button>
-            </div>
-          </li>
-        </ul>
-      </section>
-    </main>
+              <div class="vote-buttons">
+                <button>👍 <strong>11</strong></button>
+                <button>🤯 <strong>2</strong></button>
+                <button>⛔️ <strong>0</strong></button>
+              </div>
+            </li>
+          </ul>
+        </section>
+      </main>
+    </div>
   </body>
 </html>
