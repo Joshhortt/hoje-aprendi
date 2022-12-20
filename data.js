@@ -1,7 +1,7 @@
 const CATEGORIAS = [
   {
     name: "Ver Tudo",
-    color: ,"linear-gradient(135deg, #3b82f6, #ef4444, #16a34a, #eab308"
+    color: "linear-gradient(135deg, #3b82f6, #ef4444, #16a34a, #eab308",
   },
   { name: "Iniciação à Costura", color: "#3b82f6" },
   { name: "Projeto de Moda Criativo", color: "#16a34a" },
