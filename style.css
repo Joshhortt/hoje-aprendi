@@ -137,7 +137,7 @@ ul {
   font-family: "Coiny", sans-serif;
   line-height: 1;
   text-transform: uppercase;
-  font-size: 17px;
+  font-size: 16px;
   padding: 16px 0 13px;
   // background-image: linear-gradient(150deg, #ff0000, #00a651);
   background-image: linear-gradient(135deg, #3b82f6, #ef4444, #16a34a, #eab308);
@@ -169,4 +169,30 @@ ul {
 .btn-category {
   background-image: none;
   width: 100%;
+}
+
+.fact-form input,
+.fact-form select {
+  width: 220px;
+  border: none;
+  background-color: #78716c;
+  border-radius: 100px;
+  padding: 16px;
+  font-size: 18px;
+  color: inherit;
+  font-family: inherit;
+}
+
+.fact-form input::placeholder {
+  color: #a8a29e;
+}
+
+.fact-form input:first-child {
+  flex-grow: 1;
+}
+
+.fact-form span {
+  font-weight: 600;
+  font-size: 18px;
+  margin-right: 18px;
 }
