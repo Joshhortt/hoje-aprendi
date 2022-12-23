@@ -11,6 +11,10 @@ body {
   padding: 48px 64px;
 }
 
+.hidden {
+  display: none !important;
+}
+
 /* MAIN LAYOUT */
 // .hidden {
 //   display: none !important;
@@ -85,13 +89,12 @@ h1 {
 
 .tag {
   text-transform: uppercase;
-  font-size: 10px;
-  font-family: "Coiny", sans-serif;
-  padding-top: 3px;
-  padding-left: 10px;
-  padding-right: 10px;
+  font-weight: 700;
+  font-size: 14px;
+  font-family: "Sono", sans-serif;
+  padding: 5px 10px;
   border-radius: 100px;
-  border-radius: 100px;
+
   text-align: center;
 }
 
