@@ -93,6 +93,7 @@ function FactList() {
           <Fact key={fact.id} fact={fact} />
         ))}
       </ul>
+      <p>Existem {facts.length} partilhas na Base de Dados. Partilha também!</p>
     </section>
   );
 }
