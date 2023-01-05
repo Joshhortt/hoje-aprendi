@@ -1,3 +1,4 @@
+import { useState } from "react";
 import "./style.css";
 
 const initialFacts = [
@@ -5,7 +6,7 @@ const initialFacts = [
     id: 1,
     text: "Como começar a costurar: 1o dicas para iniciantes",
     source: "https://alegro.pt/lets-talk/como-comecar-costurar",
-    category: "intro-costura",
+    category: "introdução à costura",
     votesInteresting: 24,
     votesMindblowing: 9,
     votesFalse: 4,
@@ -16,7 +17,7 @@ const initialFacts = [
     text: "Processo criativo no design de moda: como explorar o seu?",
     source:
       "https://www.digitaletextil.com.br/blog/processo-criativo-design-de-moda/",
-    category: "projeto-moda-criativo",
+    category: "projeto de moda criativo",
     votesInteresting: 11,
     votesMindblowing: 2,
     votesFalse: 0,
@@ -27,13 +28,26 @@ const initialFacts = [
     text: "Livro Corte e Costura. O Guia Definitivo de Técnicas Para a Produção de Blazers, Blusas, Calças, Saias e Vestidos",
     source:
       "https://indicalivros.com/livros/corte-e-costura-o-guia-definitivo-de-tecnicas-para-a-producao-de-blazers-blusas-calcas-saias-e-vestidos-alison-smith",
-    category: "corte-saias-vestidos",
+    category: "corte de saias e vestidos",
     votesInteresting: 8,
     votesMindblowing: 3,
     votesFalse: 1,
     createdIn: 2022,
   },
 ];
+
+function Counter() {
+  const [count, setCount] = useState(0);
+
+  return (
+    <div>
+      <span style={{ fontSize: "40px" }}>{count}</span>
+      <button className="btn btn-large" onClick={() => setCount((c) => c + 1)}>
+        +1
+      </button>
+    </div>
+  );
+}
 
 function App() {
   const appTitle = "Hoje Aprendi!";
@@ -47,6 +61,7 @@ function App() {
         </div>
         <button className="btn btn-large btn-open">Partilhar</button>
       </header>
+      <Counter />
       <NewFactForm />
       <main className="main">
         <CategoryFilter />
