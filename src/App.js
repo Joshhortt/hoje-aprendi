@@ -118,7 +118,7 @@ function NewFactForm({ setFacts }) {
         votesInteresting: 0,
         votesMindblowing: 0,
         votesFalse: 0,
-        createdIn: new Date().getCurrentYear(),
+        createdIn: new Date().getFullYear(),
       };
       //4.Add a new fact to the UI. add the fact to state
       //5.Reset the input fields.
