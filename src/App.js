@@ -110,6 +110,16 @@ function NewFactForm() {
     //2.Check if data is valid, if so create a new fact
     if (text && isValidHttpUrl(source) && category && textLength <= 200) {
       //3.Create a new fact object
+      const newFact = {
+        id: 2,
+        text,
+        source,
+        category,
+        votesInteresting: 0,
+        votesMindblowing: 0,
+        votesFalse: 0,
+        createdIn: new Date().getCurrentYear(),
+      };
       //4.Add a new fact to the UI. add the fact to state
       //5.Reset the input fields.
       //6.Close the form
