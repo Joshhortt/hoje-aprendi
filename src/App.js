@@ -88,12 +88,26 @@ const CATEGORIES = [
 
 // New Fact Form Component
 function NewFactForm() {
+  const [text, setText] = useState("");
+  const [source, setSource] = useState("");
+  const [category, setCategory] = useState("");
+
   return (
     <form className="fact-form">
-      <input type="text" placeholder="Partilha aqui contéudos com outros..." />
+      <input
+        type="text"
+        placeholder="Partilha aqui contéudos com outros..."
+        value={text}
+        onChange={(e) => setText(e.target.value)}
+      />
       <span>200</span>
-      <input type="text" placeholder="Insere o Link ..." />
-      <select>
+      <input
+        type="text"
+        placeholder="Insere o Link ..."
+        value={source}
+        onChange={(e) => setSource(e.target.value)}
+      />
+      <select value={category} onChange={(e) => setCategory(e.target.value)}>
         <option value="">Escolhe módulo:</option>
         {CATEGORIES.map((cat) => (
           <option key={cat.name} value={cat.name}>
