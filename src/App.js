@@ -111,7 +111,7 @@ function NewFactForm() {
     if (text && isValidHttpUrl(source) && category && textLength <= 200) {
       //3.Create a new fact object
       const newFact = {
-        id: 2,
+        id: Math.round(Math.random() * 10000000),
         text,
         source,
         category,
