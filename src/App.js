@@ -74,11 +74,6 @@ function Header({ showForm, setShowForm }) {
   );
 }
 
-// New Fact Form Component
-function NewFactForm() {
-  return <form className="fact-form">Fact form</form>;
-}
-
 // Data take from v1/data.js
 const CATEGORIES = [
   { name: "Iniciação à Costura", color: "#3b82f6" },
@@ -90,6 +85,26 @@ const CATEGORIES = [
   { name: "Técnicas de Costura", color: "#f97316" },
   { name: "Conteúdos do Formador", color: "#8b5cf6" },
 ];
+
+// New Fact Form Component
+function NewFactForm() {
+  return (
+    <form className="fact-form">
+      <input type="text" placeholder="Partilha aqui contéudos com outros..." />
+      <span>200</span>
+      <input type="text" placeholder="Insere o Link ..." />
+      <select>
+        <option value="">Escolhe módulo:</option>
+        {CATEGORIES.map((cat) => (
+          <option key={cat.name} value={cat.name}>
+            {cat.name.toUpperCase()}
+          </option>
+        ))}
+      </select>
+      <button class="btn btn-large">Publicar</button>
+    </form>
+  );
+}
 
 // Category Filter Component
 function CategoryFilter() {
