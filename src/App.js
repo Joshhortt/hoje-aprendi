@@ -36,43 +36,13 @@ const initialFacts = [
   },
 ];
 
-function Counter() {
-  const [count, setCount] = useState(0);
-
-  return (
-    <div>
-      <span style={{ fontSize: "40px" }}>{count}</span>
-      <button className="btn btn-large" onClick={() => setCount((c) => c + 1)}>
-        +1
-      </button>
-    </div>
-  );
-}
-
 function App() {
-  // Three Parts of using state
-
-  // 1. Define state variable
   const [showForm, setShowForm] = useState(false);
 
-  const appTitle = "Hoje Aprendi!";
   return (
     <>
-      {/*HEADER*/}
-      <header className="header">
-        <div className="logo">
-          <img src="logo.png" height="68" width="68" alt="Hoje Aprendi!" />
-          <h1>{appTitle}</h1>
-        </div>
-        <button
-          className="btn btn-large btn-open"
-          // 3. Update state variable
-          onClick={() => setShowForm((show) => !show)}
-        >
-          Partilhar
-        </button>
-      </header>
-      {/* 2. Define state variable */}
+      <Header showForm={showForm} setShowForm={setShowForm} />
+
       {showForm ? <NewFactForm /> : null}
 
       <main className="main">
@@ -80,6 +50,27 @@ function App() {
         <FactList />
       </main>
     </>
+  );
+}
+
+// Header
+function Header({ showForm, setShowForm }) {
+  const appTitle = "Hoje Aprendi!";
+
+  return (
+    <header className="header">
+      <div className="logo">
+        <img src="logo.png" height="68" width="68" alt="Hoje Aprendi!" />
+        <h1>{appTitle}</h1>
+      </div>
+      <button
+        className="btn btn-large btn-open"
+        // 3. Update state variable
+        onClick={() => setShowForm((show) => !show)}
+      >
+        {showForm ? "Fechar" : "Partilhar"}
+      </button>
+    </header>
   );
 }
 
