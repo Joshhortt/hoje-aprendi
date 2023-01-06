@@ -38,16 +38,16 @@ const initialFacts = [
 
 function App() {
   const [showForm, setShowForm] = useState(false);
-
+  const [facts, setFacts] = useState(initialFacts);
   return (
     <>
       <Header showForm={showForm} setShowForm={setShowForm} />
 
-      {showForm ? <NewFactForm /> : null}
+      {showForm ? <NewFactForm setFacts={setFacts} /> : null}
 
       <main className="main">
         <CategoryFilter />
-        <FactList />
+        <FactList facts={facts} />
       </main>
     </>
   );
@@ -97,7 +97,7 @@ function isValidHttpUrl(string) {
 }
 
 // New Fact Form Component
-function NewFactForm() {
+function NewFactForm({ setFacts }) {
   const [text, setText] = useState("");
   const [source, setSource] = useState("");
   const [category, setCategory] = useState("");
@@ -179,9 +179,7 @@ function CategoryFilter() {
 }
 
 // Fact List Component
-function FactList() {
-  // Temporary
-  const facts = initialFacts;
+function FactList({ facts }) {
   return (
     <section>
       <ul className="facts-list">
