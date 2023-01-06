@@ -91,7 +91,7 @@ function NewFactForm() {
   const [text, setText] = useState("");
   const [source, setSource] = useState("");
   const [category, setCategory] = useState("");
-
+  const textLength = text.length;
   return (
     <form className="fact-form">
       <input
@@ -100,7 +100,7 @@ function NewFactForm() {
         value={text}
         onChange={(e) => setText(e.target.value)}
       />
-      <span>200</span>
+      <span>{200 - textLength}</span>
       <input
         type="text"
         placeholder="Insere o Link ..."
