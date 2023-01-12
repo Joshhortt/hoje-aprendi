@@ -43,7 +43,9 @@ function App() {
     <>
       <Header showForm={showForm} setShowForm={setShowForm} />
 
-      {showForm ? <NewFactForm setFacts={setFacts} /> : null}
+      {showForm ? (
+        <NewFactForm setFacts={setFacts} setShowForm={setShowForm} />
+      ) : null}
 
       <main className="main">
         <CategoryFilter />
@@ -97,7 +99,7 @@ function isValidHttpUrl(string) {
 }
 
 // New Fact Form Component
-function NewFactForm({ setFacts }) {
+function NewFactForm({ setFacts, setShowForm }) {
   const [text, setText] = useState("");
   const [source, setSource] = useState("");
   const [category, setCategory] = useState("");
@@ -120,9 +122,14 @@ function NewFactForm({ setFacts }) {
         votesFalse: 0,
         createdIn: new Date().getFullYear(),
       };
-      //4.Add a new fact to the UI. add the fact to state
+      //4.Add a new fact to the UI: add the fact to state
+      setFacts((facts) => [newFact, ...facts]);
       //5.Reset the input fields.
+      setText("");
+      setSource("");
+      setCategory("");
       //6.Close the form
+      setShowForm(false);
     }
   }
 
