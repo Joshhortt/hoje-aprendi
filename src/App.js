@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import supabase from "./supabase";
 import "./style.css";
 
 const initialFacts = [
@@ -49,7 +50,16 @@ const initialFacts = [
 
 function App() {
   const [showForm, setShowForm] = useState(false);
-  const [facts, setFacts] = useState(initialFacts);
+  const [facts, setFacts] = useState([]);
+
+  useEffect(function () {
+    async function getFacts() {
+      const { data: facts, error } = await supabase.from("facts").select("*");
+      setFacts(facts);
+    }
+    getFacts();
+  }, []);
+
   return (
     <>
       <Header showForm={showForm} setShowForm={setShowForm} />
@@ -98,11 +108,11 @@ const CATEGORIES = [
   { name: "Conteúdos do Formador", color: "#8b5cf6" },
 ];
 
-//1975 - Transformação de moldes de vestidos - 25
-//1990 - Modelação de protótipos - 50
-//1991 - Confeção de protótipos -50
-//1992 - Confeção de peças finais - 50
-//8598 - Desenvolvimento pessoal e técnicas de procura de emprego
+//UFCD 1975 - Transformação de moldes de vestidos - 25
+//UFCD 1990 - Modelação de protótipos - 50
+//UFCD 1991 - Confeção de protótipos -50
+//UFCD 1992 - Confeção de peças finais - 50
+//UFCD 8598 - Desenvolvimento pessoal e técnicas de procura de emprego - 25
 
 function isValidHttpUrl(string) {
   let url;
