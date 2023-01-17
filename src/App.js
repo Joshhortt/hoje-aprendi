@@ -2,52 +2,6 @@ import { useEffect, useState } from "react";
 import supabase from "./supabase";
 import "./style.css";
 
-// const initialFacts = [
-//   {
-//     id: 1,
-//     text: "Como começar a costurar: 1o dicas para iniciantes",
-//     source: "https://alegro.pt/lets-talk/como-comecar-costurar",
-//     category: "transformação moldes de vestidos",
-//     votesInteresting: 24,
-//     votesMindblowing: 9,
-//     votesFalse: 4,
-//     createdIn: 2023,
-//   },
-//   {
-//     id: 2,
-//     text: "Processo criativo no design de moda: como explorar o seu?",
-//     source:
-//       "https://www.digitaletextil.com.br/blog/processo-criativo-design-de-moda/",
-//     category: "modelação protótipos",
-//     votesInteresting: 11,
-//     votesMindblowing: 2,
-//     votesFalse: 0,
-//     createdIn: 2023,
-//   },
-//   {
-//     id: 3,
-//     text: "Livro Corte e Costura. O Guia Definitivo de Técnicas Para a Produção de Blazers, Blusas, Calças, Saias e Vestidos",
-//     source:
-//       "https://indicalivros.com/livros/corte-e-costura-o-guia-definitivo-de-tecnicas-para-a-producao-de-blazers-blusas-calcas-saias-e-vestidos-alison-smith",
-//     category: "confeção protótipos",
-//     votesInteresting: 8,
-//     votesMindblowing: 3,
-//     votesFalse: 1,
-//     createdIn: 2023,
-//   },
-//   {
-//     id: 4,
-//     text: "Livro Corte e Costura. O Guia Definitivo de Técnicas Para a Produção de Jeans",
-//     source:
-//       "https://indicalivros.com/livros/corte-e-costura-o-guia-definitivo-de-tecnicas-para-a-producao-de-blazers-blusas-calcas-saias-e-vestidos-alison-smith",
-//     category: "confeção peças finais",
-//     votesInteresting: 7,
-//     votesMindblowing: 2,
-//     votesFalse: 3,
-//     createdIn: 2023,
-//   },
-// ];
-
 function App() {
   const [showForm, setShowForm] = useState(false);
   const [facts, setFacts] = useState([]);
@@ -140,11 +94,11 @@ const CATEGORIES = [
   { name: "Conteúdos do Formador", color: "#8b5cf6" },
 ];
 
-//UFCD 1975 - Transformação de moldes de vestidos - 25
-//UFCD 1990 - Modelação de protótipos - 50
-//UFCD 1991 - Confeção de protótipos -50
-//UFCD 1992 - Confeção de peças finais - 50
-//UFCD 8598 - Desenvolvimento pessoal e técnicas de procura de emprego - 25
+// UFCD 1975 - Transformação de moldes de vestidos - 25
+// UFCD 1990 - Modelação de protótipos - 50
+// UFCD 1991 - Confeção de protótipos -50
+// UFCD 1992 - Confeção de peças finais - 50
+// UFCD 8598 - Desenvolvimento pessoal e técnicas de procura de emprego - 25
 
 function isValidHttpUrl(string) {
   let url;
@@ -170,18 +124,6 @@ function NewFactForm({ setFacts, setShowForm }) {
     console.log(text, source, category);
     //2.Check if data is valid, if so create a new fact
     if (text && isValidHttpUrl(source) && category && textLength <= 200) {
-      //3.Create a new fact object
-      // const newFact = {
-      //   id: Math.round(Math.random() * 10000000),
-      //   text,
-      //   source,
-      //   category,
-      //   votesInteresting: 0,
-      //   votesMindblowing: 0,
-      //   votesFalse: 0,
-      //   createdIn: new Date().getFullYear(),
-      // };
-
       //3.(NEW) Upload fact to Supabse and receive the new fact object
       setIsUploading(true);
       const { data: newFact, error } = await supabase
