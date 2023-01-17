@@ -88,7 +88,7 @@ const CATEGORIES = [
   { name: "Trans. Moldes de vestidos", color: "#3b82f6" },
   { name: "Modelação de protótipos", color: "#16a34a" },
   { name: "Confeção de protótipos", color: "#ef4444" },
-  { name: "Confeção de peças finais", color: "#eab308" },
+  { name: "Confeção de peças finais", color: "#d7a50c" },
   { name: "D.P. e Téc. procura emprego", color: "#db2777" },
   { name: "Informações da Inovinter", color: "#f97316" },
   { name: "Conteúdos do Formador", color: "#8b5cf6" },
