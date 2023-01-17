@@ -227,6 +227,9 @@ function FactList({ facts, setFacts }) {
         ))}
       </ul>
       <p>Existem {facts.length} partilhas na Base de Dados. Partilha também!</p>
+      <p>Agradecemos que votes cada partilha uma única vez!</p>
+
+      <h3>Obrigado & Bons Estudos!</h3>
     </section>
   );
 }
