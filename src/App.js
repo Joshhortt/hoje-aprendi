@@ -2,70 +2,81 @@ import { useEffect, useState } from "react";
 import supabase from "./supabase";
 import "./style.css";
 
-const initialFacts = [
-  {
-    id: 1,
-    text: "Como começar a costurar: 1o dicas para iniciantes",
-    source: "https://alegro.pt/lets-talk/como-comecar-costurar",
-    category: "transformação moldes de vestidos",
-    votesInteresting: 24,
-    votesMindblowing: 9,
-    votesFalse: 4,
-    createdIn: 2023,
-  },
-  {
-    id: 2,
-    text: "Processo criativo no design de moda: como explorar o seu?",
-    source:
-      "https://www.digitaletextil.com.br/blog/processo-criativo-design-de-moda/",
-    category: "modelação protótipos",
-    votesInteresting: 11,
-    votesMindblowing: 2,
-    votesFalse: 0,
-    createdIn: 2023,
-  },
-  {
-    id: 3,
-    text: "Livro Corte e Costura. O Guia Definitivo de Técnicas Para a Produção de Blazers, Blusas, Calças, Saias e Vestidos",
-    source:
-      "https://indicalivros.com/livros/corte-e-costura-o-guia-definitivo-de-tecnicas-para-a-producao-de-blazers-blusas-calcas-saias-e-vestidos-alison-smith",
-    category: "confeção protótipos",
-    votesInteresting: 8,
-    votesMindblowing: 3,
-    votesFalse: 1,
-    createdIn: 2023,
-  },
-  {
-    id: 4,
-    text: "Livro Corte e Costura. O Guia Definitivo de Técnicas Para a Produção de Jeans",
-    source:
-      "https://indicalivros.com/livros/corte-e-costura-o-guia-definitivo-de-tecnicas-para-a-producao-de-blazers-blusas-calcas-saias-e-vestidos-alison-smith",
-    category: "confeção peças finais",
-    votesInteresting: 7,
-    votesMindblowing: 2,
-    votesFalse: 3,
-    createdIn: 2023,
-  },
-];
+// const initialFacts = [
+//   {
+//     id: 1,
+//     text: "Como começar a costurar: 1o dicas para iniciantes",
+//     source: "https://alegro.pt/lets-talk/como-comecar-costurar",
+//     category: "transformação moldes de vestidos",
+//     votesInteresting: 24,
+//     votesMindblowing: 9,
+//     votesFalse: 4,
+//     createdIn: 2023,
+//   },
+//   {
+//     id: 2,
+//     text: "Processo criativo no design de moda: como explorar o seu?",
+//     source:
+//       "https://www.digitaletextil.com.br/blog/processo-criativo-design-de-moda/",
+//     category: "modelação protótipos",
+//     votesInteresting: 11,
+//     votesMindblowing: 2,
+//     votesFalse: 0,
+//     createdIn: 2023,
+//   },
+//   {
+//     id: 3,
+//     text: "Livro Corte e Costura. O Guia Definitivo de Técnicas Para a Produção de Blazers, Blusas, Calças, Saias e Vestidos",
+//     source:
+//       "https://indicalivros.com/livros/corte-e-costura-o-guia-definitivo-de-tecnicas-para-a-producao-de-blazers-blusas-calcas-saias-e-vestidos-alison-smith",
+//     category: "confeção protótipos",
+//     votesInteresting: 8,
+//     votesMindblowing: 3,
+//     votesFalse: 1,
+//     createdIn: 2023,
+//   },
+//   {
+//     id: 4,
+//     text: "Livro Corte e Costura. O Guia Definitivo de Técnicas Para a Produção de Jeans",
+//     source:
+//       "https://indicalivros.com/livros/corte-e-costura-o-guia-definitivo-de-tecnicas-para-a-producao-de-blazers-blusas-calcas-saias-e-vestidos-alison-smith",
+//     category: "confeção peças finais",
+//     votesInteresting: 7,
+//     votesMindblowing: 2,
+//     votesFalse: 3,
+//     createdIn: 2023,
+//   },
+// ];
 
 function App() {
   const [showForm, setShowForm] = useState(false);
   const [facts, setFacts] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [currentCategory, setCurrentCategory] = useState("all");
 
-  useEffect(function () {
-    async function getFacts() {
-      setIsLoading(true);
-      const { data: facts, error } = await supabase
-        .from("facts")
-        .select("*")
-        .order("votesInteresting", { ascending: false })
-        .limit(250);
-      setFacts(facts);
-      setIsLoading(false);
-    }
-    getFacts();
-  }, []);
+  useEffect(
+    function () {
+      async function getFacts() {
+        setIsLoading(true);
+
+        let query = supabase.from("facts").select("*");
+
+        if (currentCategory !== "all")
+          query = query.eq("category", currentCategory);
+
+        const { data: facts, error } = await query
+          .order("votesInteresting", { ascending: false })
+          .limit(250);
+
+        if (!error) setFacts(facts);
+        else alert("There was a problem getting data");
+        // setFacts(facts);
+        setIsLoading(false);
+      }
+      getFacts();
+    },
+    [currentCategory]
+  );
 
   return (
     <>
@@ -76,7 +87,8 @@ function App() {
       ) : null}
 
       <main className="main">
-        <CategoryFilter />
+        <CategoryFilter setCurrentCategory={setCurrentCategory} />
+
         {isLoading ? <Loader /> : <FactList facts={facts} />}
       </main>
     </>
@@ -204,12 +216,17 @@ function NewFactForm({ setFacts, setShowForm }) {
 }
 
 // Category Filter Component
-function CategoryFilter() {
+function CategoryFilter({ setCurrentCategory }) {
   return (
     <aside>
       <ul>
         <li className="category">
-          <button className="btn btn-all-categories">Tudo</button>
+          <button
+            className="btn btn-all-categories"
+            onClick={() => setCurrentCategory("all")}
+          >
+            Tudo
+          </button>
         </li>
 
         {CATEGORIES.map((cat) => (
@@ -217,6 +234,7 @@ function CategoryFilter() {
             <button
               className="btn btn-category"
               style={{ backgroundColor: cat.color }}
+              onClick={() => setCurrentCategory(cat.name)}
             >
               {cat.name}
             </button>
@@ -229,6 +247,14 @@ function CategoryFilter() {
 
 // Fact List Component
 function FactList({ facts }) {
+  if (facts.length === 0)
+    return (
+      <p className="message">
+        Neste momento, não existem partilhas neste módulo. ☹ Adiciona agora a
+        primeira partilha!🤩
+      </p>
+    );
+
   return (
     <section>
       <ul className="facts-list">
