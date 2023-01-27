@@ -64,7 +64,7 @@ function Loader() {
 
 // Header
 function Header({ showForm, setShowForm }) {
-  const appTitle = "Hoje Aprendi!";
+  const appTitle = "Hoje Aprendi";
 
   return (
     <header className="header">
